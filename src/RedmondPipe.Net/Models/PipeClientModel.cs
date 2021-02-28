@@ -11,6 +11,8 @@ namespace RedmondPipe.Models
 
         public string ConsoleTextColorString { get; set; }
 
+        public bool AutoPeek { get; set; }
+
         [JsonIgnore]
         public Color ConsoleBackColor
         {

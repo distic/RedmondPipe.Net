@@ -1,5 +1,5 @@
 ﻿
-namespace RedmondPipe.Net
+namespace RedmondPipe.Net.Forms
 {
     partial class FrmPipeClient
     {
@@ -49,10 +49,12 @@ namespace RedmondPipe.Net
             this.miHelp_ViewOnGitHub = new System.Windows.Forms.MenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -60,7 +62,7 @@ namespace RedmondPipe.Net
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(11, 16);
+            this.label1.Location = new System.Drawing.Point(11, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 15);
             this.label1.TabIndex = 2;
@@ -71,12 +73,13 @@ namespace RedmondPipe.Net
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(70, 14);
-            this.textBox1.Multiline = true;
+            this.textBox1.Location = new System.Drawing.Point(72, 12);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(364, 35);
+            this.textBox1.Size = new System.Drawing.Size(354, 22);
             this.textBox1.TabIndex = 0;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // textBox2
             // 
@@ -89,7 +92,7 @@ namespace RedmondPipe.Net
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(530, 307);
+            this.textBox2.Size = new System.Drawing.Size(530, 322);
             this.textBox2.TabIndex = 0;
             this.textBox2.TabStop = false;
             // 
@@ -99,11 +102,11 @@ namespace RedmondPipe.Net
             this.btnSend.Enabled = false;
             this.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnSend.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSend.Location = new System.Drawing.Point(443, 14);
+            this.btnSend.Location = new System.Drawing.Point(440, 11);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(75, 35);
+            this.btnSend.Size = new System.Drawing.Size(75, 24);
             this.btnSend.TabIndex = 1;
-            this.btnSend.Text = "Send";
+            this.btnSend.Text = "&Send";
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
@@ -220,17 +223,24 @@ namespace RedmondPipe.Net
             this.splitContainer1.Panel2.Controls.Add(this.btnSend);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Size = new System.Drawing.Size(530, 395);
-            this.splitContainer1.SplitterDistance = 307;
+            this.splitContainer1.SplitterDistance = 322;
             this.splitContainer1.TabIndex = 5;
             this.splitContainer1.TabStop = false;
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 62);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 47);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(530, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
             // 
             // FrmPipeClient
             // 
@@ -245,12 +255,15 @@ namespace RedmondPipe.Net
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Client Pipe";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmClient_FormClosing);
+            this.Load += new System.EventHandler(this.FrmPipeClient_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -276,6 +289,7 @@ namespace RedmondPipe.Net
         private System.Windows.Forms.MenuItem menuItem6;
         private System.Windows.Forms.MenuItem miHelp_ViewOnGitHub;
         private System.Windows.Forms.MenuItem menuItem8;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
 

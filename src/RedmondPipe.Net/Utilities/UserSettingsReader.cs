@@ -9,7 +9,11 @@ namespace RedmondPipe.Utilities
     {
         private static string GetLocalAppSetings()
         {
+#if DEBUG
+            return Path.Combine(Application.StartupPath, "appsettings.devel.json");
+#else
             return Path.Combine(Application.StartupPath, "appsettings.json");
+#endif
         }
 
         private static string GetBestFilename(string filename)

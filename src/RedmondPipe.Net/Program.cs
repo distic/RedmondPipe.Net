@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RedmondPipe.Net.Forms;
+using System;
 using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
@@ -56,10 +57,8 @@ namespace RedmondPipe.Net
                 {
                     var frm = new FrmPipeClient
                     {
+                        Model = data,
                         NamedPipeString = appSettings.NamedPipe,
-                        Text = data.Title,
-                        ConsoleBackColor = data.ConsoleBackColor,
-                        ConsoleTextColor = data.ConsoleTextColor,
                         MdiParent = form,
                         Location = new Point(loc, loc)
                     };
